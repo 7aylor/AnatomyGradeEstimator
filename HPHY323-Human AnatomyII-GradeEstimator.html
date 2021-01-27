@@ -2,11 +2,157 @@
 <html>
 <head>
     <title>Grade Estimator</title>
+    <style>
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            padding: 10px;
+        }
+        h1, h2, h3 {
+            color: #007030;
+        }
+        hr {
+            width: 60vw;
+            margin: 20px 30px 20px 30px;
+            border-color: #FFED50;
+            border-style: solid;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        #header h1 {
+            margin: 0;
+            text-decoration: underline;
+            font-size: 36px;
+        }
+        #header img {
+            margin-right: 10px;
+            height: 40px;
+        }
+        .section {
+            padding-left: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .section-title h3 {
+            font-size: 24px;
+            margin: 0 5px 5px 0;
+        }
+        .section-title p {
+            font-size: 20px;
+            margin: 8px 0 8px 0;
+        }
+        .inputs {
+            display: flex;
+            margin-left: 20px;
+            align-items: center;
+        }
+        input {
+            margin-right: 10px;
+            height: 24px;
+            font-size: 16px;
+        }
+        input:focus {
+            border-color: #FFED50;
+        }
+        input[type=radio] {
+            height: 20px;
+            width: 20px;
+            margin: 12px 0 0 0;
+            padding: 0;
+        }
+        label {
+            font-size: 18px;
+        }
+        .section-grade {
+            display: none;
+        }
+        .scoring-options {
+            display: flex;
+        }
+        .scoring-option {
+            margin-right: 5px;
+        }
+        #final-grade-section .section-title {
+            display: block;
+        }
+        #final-grade-section p {
+            font-size: 36px;
+        }
+        #final-letter-grade {
+            color: red;
+        }
+        table {
+            border-spacing: 0;
+            border: 1px solid gray;
+            border-radius: 2px;
+        }
+        td, th {
+            border: 1px solid gray;
+            padding: 3px;
+        }
+        @media screen and (max-width: 900px){
+            #header {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 20px;
+            }
+            #header h1 {
+                font-size: 2em;
+                text-align: center;
+            }
+            .section-title {
+                display: block;
+            }
+            .section-title h3 {
+                font-size: 2em;
+            }
+            hr {
+                width: auto;
+                margin: 20px 0 20px 0;
+            }
+            label {
+                display: block;
+                font-size: 1.5em;
+            }
+            input {
+                width: 80vw;
+                font-size: 1.2em;
+            }
+            input[type=radio] {
+                width: 1.5em;
+            }
+            .inputs {
+                display: block;
+                margin: auto;
+            }
+            .scoring-options {
+                display: block;
+            }
+            .scoring-option {
+                display: flex;
+                align-content: center;
+                margin-top: 5px;
+            }
+            .scoring-options input {
+                margin: 5px 5px 0 0;
+            }
+            table {
+                font-size: 1.2em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>HPHY 323 - Human Anatomy II</h1>
-    <h2>Grade Estimator</h2>
-    <div id="quizzes">
+    <div id="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Oregon_Ducks_logo.svg/1200px-Oregon_Ducks_logo.svg.png" alt-text="University of Oregon Logo" />
+        <h1>HPHY 323 - Human Anatomy II - Grade Estimator</h1>
+    </div>
+    <div id="quizzes" class="section">
         <div class="section-title">
             <h3>Quizzes</h3>
             <p>10% of total grade. 10 points per Quiz. Drops lowest score.</p>
@@ -43,7 +189,7 @@
     </div>
     <hr />
     <!--EB = External Brain which means homework-->
-    <div id="EBs">
+    <div id="EBs" class="section">
         <div class="section-title">
             <h3>EBs</h3>
             <p>15% of total grade. 18 points per EB.</p>
@@ -83,7 +229,7 @@
         </div>
     </div>
     <hr />
-    <div id="prelabs">
+    <div id="prelabs" class="section">
         <div class="section-title">
             <h3>Prelabs</h3>
             <p>5% of total grade. 8 points per Prelab.</p>
@@ -124,7 +270,7 @@
         </div>
     </div>
     <hr />
-    <div id="lecture-exams">
+    <div id="lecture-exams" class="section">
         <div class="section-title">
             <h3>Lecture Exams</h3>
             <p>25% of total grade. 50 points per Lecture Exam. You choose breakdown.</p>
@@ -181,13 +327,19 @@
                     </tr>
                 </tbody>
             </table>
-            <div id="lecutre-exams-scoring-options">
-                <input type="radio" name="lecture-exam-option" data-option='a' checked>
-                <label>Option A</label>
-                <input type="radio" name="lecture-exam-option" data-option='b'>
-                <label>Option B</label>
-                <input type="radio" name="lecture-exam-option" data-option='c'>
-                <label>Option C</label>
+            <div id="lecutre-exams-scoring-options" class="scoring-options">
+                <div class="scoring-option">
+                    <input type="radio" name="lecture-exam-option" data-option='a' checked>
+                    <label>Option A</label>
+                </div>
+                <div class="scoring-option">
+                    <input type="radio" name="lecture-exam-option" data-option='b'>
+                    <label>Option B</label>
+                </div>
+                <div class="scoring-option">
+                    <input type="radio" name="lecture-exam-option" data-option='c'>
+                    <label>Option C</label>
+                </div>
             </div>
         </div>
         <div class="section-grade">
@@ -195,7 +347,7 @@
         </div>
     </div>
     <hr />
-    <div id="lab-exams">
+    <div id="lab-exams" class="section">
         <div class="section-title">
             <h3>Lab Exams</h3>
             <p>40% of total grade. 30 points per Lab Exam. You choose breakdown.</p>
@@ -252,13 +404,19 @@
                     </tr>
                 </tbody>
             </table>
-            <div id="lab-exams-scoring-options">
-                <input type="radio" name="lab-exam-option" data-option='a' checked>
-                <label>Option A</label>
-                <input type="radio" name="lab-exam-option" data-option='b'>
-                <label>Option B</label>
-                <input type="radio" name="lab-exam-option" data-option='c'>
-                <label>Option C</label>
+            <div id="lab-exams-scoring-options" class="scoring-options">
+                <div class="scoring-option">
+                    <input type="radio" name="lab-exam-option" data-option='a' checked>
+                    <label>Option A</label>
+                </div>
+                <div class="scoring-option">
+                    <input type="radio" name="lab-exam-option" data-option='b'>
+                    <label>Option B</label>
+                </div>
+                <div class="scoring-option">
+                    <input type="radio" name="lab-exam-option" data-option='c'>
+                    <label>Option C</label>
+                </div>
             </div>
         </div>
         <div class="section-grade">
@@ -266,7 +424,7 @@
         </div>
     </div>
     <hr />
-    <div id="participation">
+    <div id="participation" class="section">
         <div class="section-title">
             <h3>Participation</h3>
             <p>5% of total grade. 5 points per week. 80% or higher for full grade.</p>
@@ -306,10 +464,10 @@
         </div>
     </div>
     <hr />
-    <div>
+    <div id="final-grade-section">
         <div class="section-title">
             <h3>Your Estimated Grade</h3>
-            <p><span id="final-grade">0</span> / 100 - <span id="final-letter-grade">Not Scored yet</span></p>
+            <p><span id="final-grade">0</span> / 100 : <span id="final-letter-grade">Not Scored yet</span></p>
         </div>
     </div>
 
@@ -410,7 +568,6 @@
     participationGrades.forEach(x => x.addEventListener('blur', function() {
         if(this.value != '') {
             getStandardSectionGrade(participationGrade, participationGrades, 5, 5);
-            console.log(participationGrade.innerHTML);
 
             //adds small unit to ensure whole numbers round up, ie 4 = 80% which rounds up to 100%
             participationGrade.innerHTML = Math.ceil(Number(participationGrade.innerHTML) + .0000001);
@@ -432,8 +589,6 @@
         let numUnitsCounted = allSelectors.length;
         let fewerUnitsCounted = 0; //determines how many fewer units are counted than total units
         let countOfFilledInInputs = 0;
-
-        console.log(allSelectors)
 
         allSelectors.forEach(x => {
             if(Number(x.value) > maxValue) {
@@ -462,7 +617,7 @@
             fewerUnitsCounted = 1;
         }
 
-        console.log(`pointsSums: ${pointsSum}, numUnitsCounted: ${numUnitsCounted}, maxValue: ${maxValue}, points.length: ${points.length}, fewerUnitsCounted: ${fewerUnitsCounted}`);
+        // console.log(`pointsSums: ${pointsSum}, numUnitsCounted: ${numUnitsCounted}, maxValue: ${maxValue}, points.length: ${points.length}, fewerUnitsCounted: ${fewerUnitsCounted}`);
 
         if(points.length == numUnitsCounted + 1) {
             score = (pointsSum / (numUnitsCounted * maxValue)) * percentTotalGrade;
@@ -521,7 +676,7 @@
             const exam2Value = selectedOptionDetails.exam2;
             const finalExamValue = selectedOptionDetails.final;
 
-            console.log(`exam1: [${typeof exam1Value}]${exam1Value},  exam2: [${typeof exam2Value}]${exam2Value}, finalExam: [${typeof finalExamValue}]${finalExamValue}`)
+            // console.log(`exam1: [${typeof exam1Value}]${exam1Value},  exam2: [${typeof exam2Value}]${exam2Value}, finalExam: [${typeof finalExamValue}]${finalExamValue}`)
 
             const score = (((Number(exam1.value) / maxValue) * exam1Value) + ((Number(exam2.value) / maxValue) * exam2Value) + ((Number(finalExam.value) / maxValue) * finalExamValue));
 
@@ -532,10 +687,7 @@
     }
 
     function getFinalGrade() {
-        console.log(grades);
-
         let total = Array.from(grades).map(x => Number(x.innerHTML)).reduce((total, i) => total + i);
-        console.log(total);
 
         finalGrade.innerHTML = total.toFixed(2);
         getFinalLetterGrade(total);
