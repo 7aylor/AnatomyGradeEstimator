@@ -350,20 +350,20 @@
     <div id="lab-exams" class="section">
         <div class="section-title">
             <h3>Lab Exams</h3>
-            <p>40% of total grade. 30 points per Lab Exam. You choose breakdown.</p>
+            <p>40% of total grade. 60 points per Lab Exam. You choose breakdown.</p>
         </div>
         <div class="inputs">
             <div>
                 <label for="lab-exam1">Lab Exam 1</label>
-                <input type="number" min=0 max=30 name="lab-exam1" id="lab-exam1" class="lab-exam">
+                <input type="number" min=0 max=60 name="lab-exam1" id="lab-exam1" class="lab-exam">
             </div>
             <div>
                 <label for="lab-exam2">Lab Exam 2</label>
-                <input type="number" min=0 max=30 name="lab-exam2" id="lab-exam2" class="lab-exam">
+                <input type="number" min=0 max=60 name="lab-exam2" id="lab-exam2" class="lab-exam">
             </div>
             <div>
                 <label for="lab-exam-final">Lab Exam Final</label>
-                <input type="number" min=0 max=30 name="lab-exam-final" id="lab-exam-final" class="lab-exam">
+                <input type="number" min=0 max=60 name="lab-exam-final" id="lab-exam-final" class="lab-exam">
             </div>
         </div>
         <div id="lab-exams-scoring" style="display:none;">
@@ -555,11 +555,11 @@
     };
     const labExamsScoringRadios = labExamsScoringOptionsEl.querySelectorAll('input[type=radio]').forEach(x => {
         x.addEventListener('change', function() {
-            getExamGrade(labExams, labExam1, labExam2, labExamFinal, labExamsScoringOptions, labExamsScoringOptionsEl, 30, 40, labExamsGrade);
+            getExamGrade(labExams, labExam1, labExam2, labExamFinal, labExamsScoringOptions, labExamsScoringOptionsEl, 60, 40, labExamsGrade);
         })
     });
     labExams.forEach(x => x.addEventListener('blur', function() {
-        getExamGrade(labExams, labExam1, labExam2, labExamFinal, labExamsScoringOptions, labExamsScoringOptionsEl, 30, 40, labExamsGrade);
+        getExamGrade(labExams, labExam1, labExam2, labExamFinal, labExamsScoringOptions, labExamsScoringOptionsEl, 60, 40, labExamsGrade);
     }));
 
     //participation
