@@ -148,10 +148,12 @@
     </style>
 </head>
 <body>
+    <!--Removing for iframed version
     <div id="header">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Oregon_Ducks_logo.svg/1200px-Oregon_Ducks_logo.svg.png" alt-text="University of Oregon Logo" />
         <h1>HPHY 323 - Human Anatomy II - Grade Estimator</h1>
     </div>
+    -->
     <div id="quizzes" class="section">
         <div class="section-title">
             <h3>Quizzes</h3>
@@ -259,10 +261,6 @@
             <div>
                 <label for="prelab6">Prelab 6</label>
                 <input type="number" min=0 max=8 name="prelab6" id="prelab6" class="prelab">
-            </div>
-            <div>
-                <label for="prelab7">Prelab 7</label>
-                <input type="number" min=0 max=8 name="prelab7" id="prelab7" class="prelab">
             </div>
         </div>
         <div class="section-grade">
@@ -570,7 +568,9 @@
             getStandardSectionGrade(participationGrade, participationGrades, 5, 5);
 
             //adds small unit to ensure whole numbers round up, ie 4 = 80% which rounds up to 100%
-            participationGrade.innerHTML = Math.ceil(Number(participationGrade.innerHTML) + .0000001);
+            let participationPoints = Number(participationGrade.innerHTML);
+            participationPoints = participationPoints >= 4 ? 5 : participationPoints;
+            participationGrade.innerHTML = participationPoints;
         }
 
         getFinalGrade();
