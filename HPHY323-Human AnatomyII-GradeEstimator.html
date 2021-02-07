@@ -95,7 +95,20 @@
             border: 1px solid gray;
             padding: 3px;
         }
-        @media screen and (max-width: 900px){
+        button {
+            padding: 10px;
+            background-color: #007030;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 20px;
+        }
+        button:hover {
+            cursor: pointer;
+            background-color: darkgreen;
+            color: #FFED50;
+        }
+        @media only screen and (max-width: 1000px){
             #header {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -144,6 +157,13 @@
             table {
                 font-size: 1.2em;
             }
+            button {
+                margin-top: 10px;
+                width: 81vw;
+            }
+            .btn-clear-all {
+                width: 90vw;
+            }
         }
     </style>
 </head>
@@ -184,6 +204,7 @@
                 <label for="quiz6">Quiz 6   </label>
                 <input type="number" min=0 max=10 name="quiz6" id="quiz6" class="quiz">
             </div>
+            <button class="btn-clear-section">Clear Scores</button>
         </div>
         <div class="section-grade">
             <p><span id="quiz-grade" class="grade">0</span> / 10</p>
@@ -225,6 +246,7 @@
                 <label for="EB7">EB7</label>
                 <input type="number" min=0 max=18 name="EB7" id="EB7" class="EB">
             </div>
+            <button class="btn-clear-section">Clear Scores</button>
         </div>
         <div class="section-grade">
             <p><span id="EBs-grade" class="grade">0</span> / 15</p>
@@ -237,7 +259,6 @@
             <p>5% of total grade. 8 points per Prelab.</p>
         </div>
         <div class="inputs">
-
             <div>
                 <label for="prelab1">Prelab 1</label>
                 <input type="number" min=0 max=8 name="prelab1" id="prelab1" class="prelab">
@@ -262,13 +283,14 @@
                 <label for="prelab6">Prelab 6</label>
                 <input type="number" min=0 max=8 name="prelab6" id="prelab6" class="prelab">
             </div>
+            <button class="btn-clear-section">Clear Scores</button>
         </div>
         <div class="section-grade">
             <p><span id="prelabs-grade" class="grade">0</span> / 5</p>
         </div>
     </div>
     <hr />
-    <div id="lecture-exams" class="section">
+    <div id="lecture-exams" class="section exam">
         <div class="section-title">
             <h3>Lecture Exams</h3>
             <p>25% of total grade. 50 points per Lecture Exam. You choose breakdown.</p>
@@ -286,8 +308,9 @@
                 <label for="lecture-exam-final">Lecture Exam Final</label>
                 <input type="number" min=0 max=50 name="lecture-exam-final" id="lecture-exam-final" class="lecture-exam">
             </div>
+            <button class="btn-clear-section">Clear Scores</button>
         </div>
-        <div id="lecture-exams-scoring" style="display:none;">
+        <div id="lecture-exams-scoring" style="display:none;" class="scoring-options-container">
             <h4>Scoring Options</h3>
             <table>
                 <thead>
@@ -345,7 +368,7 @@
         </div>
     </div>
     <hr />
-    <div id="lab-exams" class="section">
+    <div id="lab-exams" class="section exam">
         <div class="section-title">
             <h3>Lab Exams</h3>
             <p>40% of total grade. 60 points per Lab Exam. You choose breakdown.</p>
@@ -363,8 +386,9 @@
                 <label for="lab-exam-final">Lab Exam Final</label>
                 <input type="number" min=0 max=60 name="lab-exam-final" id="lab-exam-final" class="lab-exam">
             </div>
+            <button class="btn-clear-section">Clear Scores</button>
         </div>
-        <div id="lab-exams-scoring" style="display:none;">
+        <div id="lab-exams-scoring" style="display:none;" class="scoring-options-container">
             <h4>Scoring Options</h3>
             <table>
                 <thead>
@@ -456,6 +480,7 @@
                 <label for="participation-week10">Week 10</label>
                 <input type="number" min=0 max=5 name="participation-week10" id="participation-week10" class="participation">
             </div>
+            <button class="btn-clear-section">Clear Scores</button>
         </div>
         <div class="section-grade">
             <p><span id="participation-grade" class="grade">0</span> / 5</p>
@@ -466,6 +491,7 @@
         <div class="section-title">
             <h3>Your Estimated Grade</h3>
             <p><span id="final-grade">0</span> / 100 : <span id="final-letter-grade">Not Scored yet</span></p>
+            <button class="btn-clear-all">Clear All Scores</button>
         </div>
     </div>
 
@@ -564,14 +590,14 @@
     const participationGrades = document.querySelectorAll('.participation');
     const participationGrade = document.querySelector('#participation-grade');
     participationGrades.forEach(x => x.addEventListener('blur', function() {
-        if(this.value != '') {
+        // if(this.value != '') {
             getStandardSectionGrade(participationGrade, participationGrades, 5, 5);
 
             //adds small unit to ensure whole numbers round up, ie 4 = 80% which rounds up to 100%
             let participationPoints = Number(participationGrade.innerHTML);
             participationPoints = participationPoints >= 4 ? 5 : participationPoints;
             participationGrade.innerHTML = participationPoints;
-        }
+        // }
 
         getFinalGrade();
     }));
@@ -580,6 +606,11 @@
     const finalGrade = document.querySelector('#final-grade');
     const finalLetterGrade = document.querySelector('#final-letter-grade');
     const grades = document.querySelectorAll('.grade');
+
+    //clear buttons
+    const sectionClearBtns = document.querySelectorAll('.btn-clear-section');
+    sectionClearBtns.forEach(x => x.addEventListener('click', clearSection));
+    document.querySelector('.btn-clear-all').addEventListener('click', resetForm);
 
     //Used to calculate grade for standard sections (not used for exams)
     function getStandardSectionGrade(selector, allSelectors, maxValue, percentTotalGrade, removeLowestScore = false) {
@@ -606,6 +637,8 @@
         });
 
         if(countOfFilledInInputs == 0) {
+            selector.innerHTML = 0;
+            getFinalGrade();
             return;
         }
         
@@ -694,7 +727,10 @@
     }
 
     function getFinalLetterGrade(percent) {
-        if(percent < 59.5) {
+        if(percent == 0) {
+            finalLetterGrade.innerHTML = 'Not Scored Yet';
+        }
+        else if(percent < 59.5) {
             finalLetterGrade.innerHTML = 'F';
         }
         else if(percent < 69.5) {
@@ -727,6 +763,34 @@
         else {
             finalLetterGrade.innerHTML = 'A+';
         }
+    }
+
+    function clearSection() {
+        const sectionParent = this.parentNode.parentNode;
+        const sectionInputs = sectionParent.querySelectorAll('input');
+        sectionInputs.forEach(input => input.value = '');
+        
+        console.log(sectionParent);
+        
+        if(sectionParent.classList.contains('exam')) {
+            sectionParent.querySelectorAll('.scoring-options input')[0].checked = true;
+            sectionParent.querySelector(".scoring-options-container").style.display = 'none';
+        }
+        
+        sectionParent.querySelector('.grade').innerHTML = 0;
+        getFinalGrade();
+    }
+
+    function resetForm() {
+        document.querySelectorAll('input').forEach(input => input.value = '');
+        document.querySelectorAll('.grade').forEach(grade => grade.innerHTML = 0);
+        // finalGrade.innerHTML = 0;
+        // finalLetterGrade.innerHTML = 'Not Scored yet';
+        labExamsScoringOptionsEl.style.display = 'none';
+        labExamsScoringOptionsEl.querySelectorAll('input')[0].checked = true;
+        lectureExamsScoringOptionsEl.style.display = 'none';
+        lectureExamsScoringOptionsEl.querySelectorAll('input')[0].checked = true;
+        getFinalGrade();
     }
 
     //HELPER FUNCTION: if there is a decimal, round to 2 decimal points
