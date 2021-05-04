@@ -202,8 +202,12 @@
                 <input type="number" min=0 max=10 name="quiz5" id="quiz5" class="quiz">
             </div>
             <div>
-                <label for="quiz6">Quiz 6   </label>
+                <label for="quiz6">Quiz 6</label>
                 <input type="number" min=0 max=10 name="quiz6" id="quiz6" class="quiz">
+            </div>
+            <div>
+                <label for="quiz6">Quiz 7</label>
+                <input type="number" min=0 max=10 name="quiz6" id="quiz7" class="quiz">
             </div>
             <button class="btn-clear-section">Clear Scores</button>
         </div>
@@ -216,7 +220,7 @@
     <div id="EBs" class="section">
         <div class="section-title">
             <h3>EBs</h3>
-            <p>15% of total grade. 18 points per EB. Drops lowest score.</p>
+            <p>10% of total grade. 18 points per EB.</p>
         </div>
         <div class="inputs">
             <div>
@@ -247,6 +251,10 @@
                 <label for="EB7">EB7</label>
                 <input type="number" min=0 max=18 name="EB7" id="EB7" class="EB">
             </div>
+            <div>
+                <label for="EB8">EB8</label>
+                <input type="number" min=0 max=18 name="EB8" id="EB8" class="EB">
+            </div>
             <button class="btn-clear-section">Clear Scores</button>
         </div>
         <div class="section-grade">
@@ -265,8 +273,12 @@
                 <input type="number" min=0 max=8 name="prelab1" id="prelab1" class="prelab">
             </div>
             <div>
-                <label for="prelab2">Prelab 2</label>
-                <input type="number" min=0 max=8 name="prelab2" id="prelab2" class="prelab">
+                <label for="prelab2">Prelab 2A</label>
+                <input type="number" min=0 max=8 name="prelab2a" id="prelab2a" class="prelab">
+            </div>
+            <div>
+                <label for="prelab2">Prelab 2B</label>
+                <input type="number" min=0 max=8 name="prelab2b" id="prelab2b" class="prelab">
             </div>
             <div>
                 <label for="prelab3">Prelab 3</label>
@@ -291,10 +303,10 @@
         </div>
     </div>
     <hr />
-    <div id="lecture-exams" class="section exam">
+    <div id="lecture-exams" class="section exam alt-grading-paradigm">
         <div class="section-title">
             <h3>Lecture Exams</h3>
-            <p>25% of total grade. 50 points per Lecture Exam. You choose breakdown.</p>
+            <p>40% of total grade. 50 points per Lecture Exam. You choose breakdown.</p>
         </div>
         <div class="inputs">
             <div>
@@ -331,21 +343,21 @@
                     </tr>
                     <tr>
                         <td>Exam 2</td>
+                        <td>15%</td>
+                        <td>15%</td>
                         <td>5%</td>
-                        <td>10%</td>
-                        <td>10%</td>
                     </tr>
                     <tr>
                         <td>Exam Final</td>
-                        <td>15%</td>
-                        <td>15%</td>
-                        <td>10%</td>
+                        <td>20%</td>
+                        <td>25%</td>
+                        <td>30%</td>
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td>25%</td>
-                        <td>25%</td>
-                        <td>25%</td>
+                        <td>40%</td>
+                        <td>40%</td>
+                        <td>40%</td>
                     </tr>
                 </tbody>
             </table>
@@ -372,7 +384,7 @@
     <div id="lab-exams" class="section exam">
         <div class="section-title">
             <h3>Lab Exams</h3>
-            <p>40% of total grade. 60 points per Lab Exam. You choose breakdown.</p>
+            <p>30% of total grade (15% each). 60 points per Lab Exam.</p>
         </div>
         <div class="inputs">
             <div>
@@ -383,64 +395,7 @@
                 <label for="lab-exam2">Lab Exam 2</label>
                 <input type="number" min=0 max=60 name="lab-exam2" id="lab-exam2" class="lab-exam">
             </div>
-            <div>
-                <label for="lab-exam-final">Lab Exam Final</label>
-                <input type="number" min=0 max=60 name="lab-exam-final" id="lab-exam-final" class="lab-exam">
-            </div>
             <button class="btn-clear-section">Clear Scores</button>
-        </div>
-        <div id="lab-exams-scoring" style="display:none;" class="scoring-options-container">
-            <h4>Scoring Options</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Lab Exam Scoring</th>
-                        <th>Option A</th>
-                        <th>Option B</th>
-                        <th>Option C</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Exam 1</td>
-                        <td>5%</td>
-                        <td>0%</td>
-                        <td>5%</td>
-                    </tr>
-                    <tr>
-                        <td>Exam 2</td>
-                        <td>15%</td>
-                        <td>15%</td>
-                        <td>5%</td>
-                    </tr>
-                    <tr>
-                        <td>Exam Final</td>
-                        <td>20%</td>
-                        <td>25%</td>
-                        <td>30%</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>40%</td>
-                        <td>40%</td>
-                        <td>40%</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="lab-exams-scoring-options" class="scoring-options">
-                <div class="scoring-option">
-                    <input type="radio" name="lab-exam-option" data-option='a' checked>
-                    <label>Option A</label>
-                </div>
-                <div class="scoring-option">
-                    <input type="radio" name="lab-exam-option" data-option='b'>
-                    <label>Option B</label>
-                </div>
-                <div class="scoring-option">
-                    <input type="radio" name="lab-exam-option" data-option='c'>
-                    <label>Option C</label>
-                </div>
-            </div>
         </div>
         <div class="section-grade">
             <p><span id="lab-exams-grade" class="grade">0</span> / 40</p>
@@ -453,6 +408,10 @@
             <p>5% of total grade. 5 points per week. 80% or higher for full grade.</p>
         </div>
         <div class="inputs">
+            <div>
+                <label for="participation-week1">Week 1</label>
+                <input type="number" min=0 max=5 name="participation-week1" id="participation-week1" class="participation">
+            </div>
             <div>
                 <label for="participation-week2">Week 2</label>
                 <input type="number" min=0 max=5 name="participation-week2" id="participation-week2" class="participation">
@@ -511,7 +470,7 @@
     const EBsGradeEl = document.querySelector('#EBs-grade');
     let EBsGrade = 0;
     EBs.forEach(x => x.addEventListener('blur', function() {
-        getStandardSectionGrade(EBsGradeEl, EBs, 18, 15, true);
+        getStandardSectionGrade(EBsGradeEl, EBs, 18, 10);
     }));
 
     //Prelabs
@@ -531,39 +490,6 @@
     const lectureExamsScoringOptions = {
         a: {
             exam1: 5,
-            exam2: 5,
-            final: 15
-        },
-        b: {
-            exam1: 0,
-            exam2: 10,
-            final: 15
-        },
-        c: {
-            exam1: 5,
-            exam2: 10,
-            final: 10
-        }
-    };
-    const lectureExamsScoringRadios = lectureExamsScoringOptionsEl.querySelectorAll('input[type=radio]').forEach(x => {
-        x.addEventListener('change', function() {
-            getExamGrade(lectureExams, lectureExam1, lectureExam2, lectureExamFinal, lectureExamsScoringOptions, lectureExamsScoringOptionsEl, 50, 25,lectureExamsGrade);
-        });
-    });
-    lectureExams.forEach(x => x.addEventListener('blur', function() {
-        getExamGrade(lectureExams, lectureExam1, lectureExam2, lectureExamFinal, lectureExamsScoringOptions, lectureExamsScoringOptionsEl, 50, 25,lectureExamsGrade);
-    }));
-
-    //Lab Exams
-    const labExams = document.querySelectorAll('.lab-exam');
-    const labExam1 = document.querySelector('#lab-exam1');
-    const labExam2 = document.querySelector('#lab-exam2');
-    const labExamFinal = document.querySelector('#lab-exam-final');
-    const labExamsGrade = document.querySelector('#lab-exams-grade');
-    const labExamsScoringOptionsEl = document.querySelector('#lab-exams-scoring');
-    const labExamsScoringOptions = {
-        a: {
-            exam1: 5,
             exam2: 15,
             final: 20
         },
@@ -578,13 +504,21 @@
             final: 30
         }
     };
-    const labExamsScoringRadios = labExamsScoringOptionsEl.querySelectorAll('input[type=radio]').forEach(x => {
+    const lectureExamsScoringRadios = lectureExamsScoringOptionsEl.querySelectorAll('input[type=radio]').forEach(x => {
         x.addEventListener('change', function() {
-            getExamGrade(labExams, labExam1, labExam2, labExamFinal, labExamsScoringOptions, labExamsScoringOptionsEl, 60, 40, labExamsGrade);
-        })
+            getAltGradingParadigmGrade(lectureExams, lectureExam1, lectureExam2, lectureExamFinal, lectureExamsScoringOptions, lectureExamsScoringOptionsEl, 50, 25,lectureExamsGrade);
+        });
     });
+    lectureExams.forEach(x => x.addEventListener('blur', function() {
+        getAltGradingParadigmGrade(lectureExams, lectureExam1, lectureExam2, lectureExamFinal, lectureExamsScoringOptions, lectureExamsScoringOptionsEl, 50, 40,lectureExamsGrade);
+    }));
+
+    //Lab Exams
+    const labExams = document.querySelectorAll('.lab-exam');
+    const labExamsGradeEl = document.querySelector('#lab-exams-grade');
+    
     labExams.forEach(x => x.addEventListener('blur', function() {
-        getExamGrade(labExams, labExam1, labExam2, labExamFinal, labExamsScoringOptions, labExamsScoringOptionsEl, 60, 40, labExamsGrade);
+        getStandardSectionGrade(labExamsGradeEl, labExams, 60, 30);
     }));
 
     //participation
@@ -672,7 +606,7 @@
     }
 
     //Used to calculate grade for both exam sections
-    function getExamGrade(exams, exam1, exam2, finalExam, scoringOptions, scoringOptionsEl, maxValue, percentTotalGrade, examGradeEl) {
+    function getAltGradingParadigmGrade(exams, exam1, exam2, finalExam, scoringOptions, scoringOptionsEl, maxValue, percentTotalGrade, examGradeEl) {
         exams.forEach(x => {
             if(Number(x.value) > maxValue) {
                 x.value = maxValue;
@@ -771,9 +705,7 @@
         const sectionInputs = sectionParent.querySelectorAll('input');
         sectionInputs.forEach(input => input.value = '');
         
-        console.log(sectionParent);
-        
-        if(sectionParent.classList.contains('exam')) {
+        if(sectionParent.classList.contains('alt-grading-paradigm')) {
             sectionParent.querySelectorAll('.scoring-options input')[0].checked = true;
             sectionParent.querySelector(".scoring-options-container").style.display = 'none';
         }
@@ -787,8 +719,8 @@
         document.querySelectorAll('.grade').forEach(grade => grade.innerHTML = 0);
         // finalGrade.innerHTML = 0;
         // finalLetterGrade.innerHTML = 'Not Scored yet';
-        labExamsScoringOptionsEl.style.display = 'none';
-        labExamsScoringOptionsEl.querySelectorAll('input')[0].checked = true;
+        //labExamsScoringOptionsEl.style.display = 'none';
+        //labExamsScoringOptionsEl.querySelectorAll('input')[0].checked = true;
         lectureExamsScoringOptionsEl.style.display = 'none';
         lectureExamsScoringOptionsEl.querySelectorAll('input')[0].checked = true;
         getFinalGrade();
