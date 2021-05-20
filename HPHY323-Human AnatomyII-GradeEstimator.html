@@ -178,7 +178,7 @@
     <div id="quizzes" class="section">
         <div class="section-title">
             <h3>Quizzes</h3>
-            <p>10% of total grade. 10 points per Quiz. Drops lowest score.</p>
+            <p>10% of total grade. 10 points per Quiz.</p>
         </div>
         <div class="inputs">
             <div>
@@ -220,7 +220,7 @@
     <div id="EBs" class="section">
         <div class="section-title">
             <h3>EBs</h3>
-            <p>10% of total grade. 18 points per EB.</p>
+            <p>10% of total grade. 18 points per EB. Drops lowest score.</p>
         </div>
         <div class="inputs">
             <div>
@@ -462,7 +462,7 @@
     const quizGradeEl = document.querySelector('#quiz-grade');
     let quizGrade = 0;
     quizzes.forEach(x => x.addEventListener('blur', function() { 
-        getStandardSectionGrade(quizGradeEl, quizzes, 10, 10, true);
+        getStandardSectionGrade(quizGradeEl, quizzes, 10, 10);
     }));
 
     //EBs
@@ -470,7 +470,7 @@
     const EBsGradeEl = document.querySelector('#EBs-grade');
     let EBsGrade = 0;
     EBs.forEach(x => x.addEventListener('blur', function() {
-        getStandardSectionGrade(EBsGradeEl, EBs, 18, 10);
+        getStandardSectionGrade(EBsGradeEl, EBs, 18, 10, true);
     }));
 
     //Prelabs
@@ -506,7 +506,7 @@
     };
     const lectureExamsScoringRadios = lectureExamsScoringOptionsEl.querySelectorAll('input[type=radio]').forEach(x => {
         x.addEventListener('change', function() {
-            getAltGradingParadigmGrade(lectureExams, lectureExam1, lectureExam2, lectureExamFinal, lectureExamsScoringOptions, lectureExamsScoringOptionsEl, 50, 25,lectureExamsGrade);
+            getAltGradingParadigmGrade(lectureExams, lectureExam1, lectureExam2, lectureExamFinal, lectureExamsScoringOptions, lectureExamsScoringOptionsEl, 50, 25, lectureExamsGrade);
         });
     });
     lectureExams.forEach(x => x.addEventListener('blur', function() {
